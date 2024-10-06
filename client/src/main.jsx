@@ -8,8 +8,8 @@ import store from "./store/store.js";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <Provide store = {store}>
+    <Provider store = {store}>
       <App />
-    </Provide>
+    </Provider>
   </BrowserRouter>
 );
