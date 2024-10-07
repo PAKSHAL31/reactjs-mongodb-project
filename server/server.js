@@ -2,7 +2,8 @@ const express = require('express')
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
+const authRouter = require("./routes/auth/auth-route");
+const adminEventRouter = require("./routes/admin/event-routes")
 //Ceate a database connection
 mongoose
   .connect("mongodb+srv://ranawatpakshal310800:Pmmn3108@cluster0.itu5e.mongodb.net/")
@@ -30,8 +31,8 @@ app.use(
 
 app.use(cookieParser());
 app.use(express.json());
-
-
+app.use("/api/auth", authRouter);
+app.use("/api/admin/events",adminEventRouter);
 
 
 app.listen(PORT, () => {
