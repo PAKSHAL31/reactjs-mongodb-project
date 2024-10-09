@@ -119,9 +119,8 @@ export const eventFilterOptions = {
   ],
   price: [
     { id: "free", label: "Free" },
-    { id: "under25", label: "Under $25" },
-    { id: "over25", label: "$25 to $50" },
-    { id: "over50", label: "Over $50" },
+    { id: "under10", label: "Under $10" },
+    { id: "over10" , label: "Over $10"}
   ],
 };
 

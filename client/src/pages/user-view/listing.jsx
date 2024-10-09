@@ -17,13 +17,21 @@ import { fetchAllFilteredEvents } from "@/store/user/event-slice";
 import UserEventTile from "@/components/user-view/user-event-tile";
 import { useSearchParams } from "react-router-dom";
 
+
+//State Updates: The handleFilter function updates the filters state when a filter is selected.
+//URL Parameter Creation: The createSearchParamsHelper function constructs the query string based on the updated filters.
+//Automatic URL Update: The useEffect hook listens for changes to the filters state and updates the URL parameters accordingly using setSearchParams.
+
+
 const EventListing = () => {
   const dispatch = useDispatch();
   const { eventList } = useSelector((state) => state.userEvents);
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
 
+
+  //setting the sort values
   function handleSort(value) {
     setSort(value);
   }
@@ -47,13 +55,13 @@ const EventListing = () => {
         cpyFilters[getFilteredId].push(getFilteredOption);
       else cpyFilters[getFilteredId].splice(indexOfCurrentOption, 1);
     }
-    setFilters(cpyFilters)
+    setFilters(cpyFilters);
     sessionStorage.setItem("filters", JSON.stringify(cpyFilters)); // on page load it is necessary to get from session storage
   }
 
   function createSearchParamsHelper(filterParams) {
     const queryParams = [];
-    
+
     // check the whole key value pair. In the second step check if each key has value as an array if its then join value using array.
     for (const [key, value] of Object.entries(filterParams)) {
       if (Array.isArray(value) && value.length > 0) {
@@ -66,7 +74,6 @@ const EventListing = () => {
     // last all keys will be joined by & key1=value1,value2&key2=value3
     return queryParams.join("&");
   }
-  
 
   useEffect(() => {
     if (filters && Object.keys(filters).length > 0) {
@@ -78,11 +85,13 @@ const EventListing = () => {
   useEffect(() => {
     setSort("price-lowtohigh");
     setFilters(JSON.parse(sessionStorage.getItem("filters")) || {});
-  },[]);
+  }, []);
 
   useEffect(() => {
-    dispatch(fetchAllFilteredEvents());
-  }, [dispatch]);
+    if (filters !== null && sort !== null) dispatch(fetchAllFilteredEvents(
+      {filterParams:filters, sortParams: sort}
+    ));
+  }, [dispatch, sort, filters]);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-6 p-4 md:p-6">
