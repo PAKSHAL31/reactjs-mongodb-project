@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 function AuthLayout() {
   return (
     <div
-      className="flex min-h-[90vh] w-full bg-cover bg-center"
+      className="flex min-h-[100vh] w-full bg-cover bg-center"
       style={{
         backgroundImage:
           'url("https://images.pexels.com/photos/1317374/pexels-photo-1317374.jpeg")',
