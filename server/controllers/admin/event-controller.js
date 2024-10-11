@@ -78,6 +78,7 @@ const fetchAllEvents = async (req, res) => {
 const ediEvent = async (req, res) => {
   try {
     const { id } = req.params; //updating by id
+
     const {
       image,
       eventName,

@@ -97,7 +97,7 @@ export const eventUserHeader = [
   },
   {
     id: "events",
-    label: "Events",
+    label: "My Events",
     path: "/listing",
   },
   {
@@ -139,3 +139,34 @@ export const typeOptionsMap = {
   health: "Health",
   sciencetechnology: "Science & Technology",
 };
+
+export const addressFormControls = [
+  {
+    label: "Address",
+    name: "address",
+    componentType: "input",
+    type: "text",
+    placeholder: "Enter your address",
+  },
+  {
+    label: "City",
+    name: "city",
+    componentType: "input",
+    type: "text",
+    placeholder: "Enter your city",
+  },
+  {
+    label: "Pincode",
+    name: "pincode",
+    componentType: "input",
+    type: "text",
+    placeholder: "Enter your pincode",
+  },
+  {
+    label: "Phone",
+    name: "phone",
+    componentType: "input",
+    type: "text",
+    placeholder: "Enter your phone number",
+  },
+];

@@ -41,9 +41,9 @@ const AdminEventTile = ({
             {event?.eventName}
           </h2>
           <div className="flex justify-between items-center mb-2">
-            {event?.price > 0 ? <span className="text-lg font-semibold text-primary">
+            <span className="text-lg font-semibold text-primary">
               Fee: ${event?.price}
-            </span> : <span className="text-lg font-bold">Free</span>}
+            </span>
             <span className="text-lg font-bold">{formatDate(event?.eventDate)}</span>
           </div>
         </CardContent>
@@ -69,3 +69,5 @@ const AdminEventTile = ({
 };
 
 export default AdminEventTile;
+
+

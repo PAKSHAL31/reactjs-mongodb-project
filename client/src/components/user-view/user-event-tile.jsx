@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { typeOptionsMap } from '@/config';
 
-const UserEventTile = ({event}) => {
+const UserEventTile = ({event,handleGetEventDetails}) => {
 
     const formatDate = (dateString) => {
         const options = { year: "numeric", month: "2-digit", day: "2-digit" };
@@ -71,8 +71,9 @@ const UserEventTile = ({event}) => {
       ) : (
         <Button
           className="w-full"
+          onClick={()=> handleGetEventDetails(event?._id)}
         >
-            Register
+            View
         </Button>
       )}
     </CardFooter>

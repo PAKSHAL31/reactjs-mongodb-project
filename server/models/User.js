@@ -22,6 +22,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "user",
   },
+  registeredEvents: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Event", // Referencing the Event model
+    },
+  ],
 });
 
 const User = mongoose.model("User", UserSchema);

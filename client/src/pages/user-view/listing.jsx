@@ -13,24 +13,24 @@ import { useDispatch, useSelector } from "react-redux";
 
 import React from "react";
 import { sortOptions } from "@/config";
-import { fetchAllFilteredEvents } from "@/store/user/event-slice";
+import { fetchAllFilteredEvents, fetchEventDetails } from "@/store/user/event-slice";
+import { registerEvent } from "@/store/user/registeredevents-slice";
 import UserEventTile from "@/components/user-view/user-event-tile";
 import { useSearchParams } from "react-router-dom";
-
+import EventDetailDialog from "@/components/user-view/event-Details";
+import { toast } from "@/hooks/use-toast";
 
 //State Updates: The handleFilter function updates the filters state when a filter is selected.
 //URL Parameter Creation: The createSearchParamsHelper function constructs the query string based on the updated filters.
 //Automatic URL Update: The useEffect hook listens for changes to the filters state and updates the URL parameters accordingly using setSearchParams.
 
-
 const EventListing = () => {
   const dispatch = useDispatch();
-  const { eventList } = useSelector((state) => state.userEvents);
+  const { eventList, eventDetails } = useSelector((state) => state.userEvents);
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-
-
+  const [openDetailsDialog,setOpenDetailsDialog] = useState(false)
   //setting the sort values
   function handleSort(value) {
     setSort(value);
@@ -75,12 +75,42 @@ const EventListing = () => {
     return queryParams.join("&");
   }
 
+  function handleGetEventDetails(getCurrentEventID){
+    console.log(eventDetails)
+    dispatch(fetchEventDetails(getCurrentEventID))
+    setOpenDetailsDialog(true)
+  }
+
+  function handleRegister(eventId,userId){
+    dispatch(registerEvent({userId,eventId})).then((data)=>{
+      setOpenDetailsDialog(false)
+      if(data?.payload?.success){
+      toast({
+        title: data?.payload?.message,
+      });
+    }else{
+      toast({
+        title: data?.payload?.message,
+        variant: "destructive"
+      });
+    }
+    })
+  }
+
+  
   useEffect(() => {
     if (filters && Object.keys(filters).length > 0) {
       const createQueryString = createSearchParamsHelper(filters);
       setSearchParams(new URLSearchParams(createQueryString));
     }
   }, [filters]);
+  console.log(eventDetails)
+
+    // useEffect(()=>{
+  //   if(eventDetails !== null)
+  //     setOpenDetailsDialog(true);
+  // },[eventDetails]);
+
 
   useEffect(() => {
     setSort("price-lowtohigh");
@@ -88,9 +118,10 @@ const EventListing = () => {
   }, []);
 
   useEffect(() => {
-    if (filters !== null && sort !== null) dispatch(fetchAllFilteredEvents(
-      {filterParams:filters, sortParams: sort}
-    ));
+    if (filters !== null && sort !== null)
+      dispatch(
+        fetchAllFilteredEvents({ filterParams: filters, sortParams: sort })
+      );
   }, [dispatch, sort, filters]);
 
   return (
@@ -134,7 +165,7 @@ const EventListing = () => {
           {eventList && eventList.length > 0
             ? eventList.map((eventItem) => (
                 <UserEventTile
-                  // handleGetProductDetails={handleGetProductDetails}
+                  handleGetEventDetails={handleGetEventDetails}
                   event={eventItem}
                   //handleAddtoCart={handleAddtoCart}
                 />
@@ -142,6 +173,7 @@ const EventListing = () => {
             : null}
         </div>
       </div>
+      <EventDetailDialog open={openDetailsDialog} setOpen={setOpenDetailsDialog} eventDetails={eventDetails} handleRegister={handleRegister}/>
     </div>
   );
 };

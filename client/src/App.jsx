@@ -71,10 +71,10 @@ function App() {
             </CheckAuth>
           }
         >
-          <Route path="home" element={<UserHome />}></Route>
+          <Route path="home" element={<EventListing />}></Route>
           <Route path="account" element={<UserAccount />}></Route>
           <Route path="checkout" element={<UserCheckout />}></Route>
-          <Route path="listing" element={<EventListing />}></Route>
+          <Route path="listing" element={<UserHome />}></Route>
         </Route>
 
 
