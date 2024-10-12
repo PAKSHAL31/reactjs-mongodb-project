@@ -8,7 +8,6 @@ import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
 import AdminLayout from "./components/admin-view/layout";
 import AdminDashboard from "./pages/admin-view/dashboard";
-import AdminDataManage from "./pages/admin-view/admindataManage";
 import NotFound from "./pages/not-found";
 import UserLayout from "./components/user-view/layout";
 import UserHome from "./pages/user-view/home";
@@ -20,6 +19,8 @@ import UnAuthPage from "./pages/unauth-page";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./store/auth-slice";
 import { Skeleton } from "./components/ui/skeleton";
+import PaypalReturnPage from "./pages/user-view/paypal-return";
+import PaymentSuccessPage from "./pages/user-view/payment-success";
 function App() {
  
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -59,7 +60,6 @@ function App() {
           }
         >
           <Route path="dashboard" element={<AdminDashboard />}></Route>
-          <Route path="events" element={<AdminDataManage />}></Route>
         </Route>
 
         {/* USer Route */}
@@ -75,6 +75,8 @@ function App() {
           <Route path="account" element={<UserAccount />}></Route>
           <Route path="checkout" element={<UserCheckout />}></Route>
           <Route path="listing" element={<UserHome />}></Route>
+          <Route path="paypal-return" element={<PaypalReturnPage/>}></Route>
+          <Route path="payment-success" element={<PaymentSuccessPage/>}></Route>
         </Route>
 
 

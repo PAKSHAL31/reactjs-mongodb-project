@@ -15,12 +15,6 @@ const adminSidebarMenuItems = [
     path: "/admin/dashboard",
     icon: <LayoutDashboard />,
   },
-  {
-    id: "events",
-    label: "Events",
-    path: "/admin/events",
-    icon: <BadgeCheck />,
-  },
 ];
 
 function MenuItems({ setOpen }) {

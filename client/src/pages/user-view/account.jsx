@@ -9,7 +9,7 @@ const UserAccount = () => {
         <div className="flex flex-col rounded-lg border bg-background p-6 shadow-sm">
           <Tabs defaultValue="orders">
             <TabsList>
-              <TabsTrigger value="orders">Orders</TabsTrigger>
+              <TabsTrigger value="orders">Payment</TabsTrigger>
               <TabsTrigger value="address">Address</TabsTrigger>
             </TabsList>
             <TabsContent value="orders">

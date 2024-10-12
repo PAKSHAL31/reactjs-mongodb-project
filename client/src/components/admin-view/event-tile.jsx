@@ -7,7 +7,8 @@ const AdminEventTile = ({
   setOpenCreateEventsDialog,
   setFormData,
   setCurrentEditedId,
-  handleDelete
+  handleDelete,
+  setOpenUserListDialog,
 }) => {
   const eventDate = new Date(event?.eventDate);
   const isPastEvent = eventDate < new Date();
@@ -44,10 +45,12 @@ const AdminEventTile = ({
             <span className="text-lg font-semibold text-primary">
               Fee: ${event?.price}
             </span>
-            <span className="text-lg font-bold">{formatDate(event?.eventDate)}</span>
+            <span className="text-lg font-bold">
+              {formatDate(event?.eventDate)}
+            </span>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between items-center">
+        <CardFooter className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center flex-wrap">
           {isPastEvent ? (
             <span className="text-gray-500">Can't Edit</span>
           ) : (
@@ -69,5 +72,3 @@ const AdminEventTile = ({
 };
 
 export default AdminEventTile;
-
-

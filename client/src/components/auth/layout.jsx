@@ -6,14 +6,14 @@ function AuthLayout() {
       className="flex min-h-[100vh] w-full bg-cover bg-center"
       style={{
         backgroundImage:
-          'url("https://images.pexels.com/photos/1317374/pexels-photo-1317374.jpeg")',
+          'url("https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg")',
       }}
     >
       {/* Left side for large screens, full background for small screens */}
       <div className="hidden lg:flex items-center justify-center w-1/2 px-12">
         <div className="max-w-md space-y-6 text-center text-primary-foreground">
-          <h1 className="text-4xl font-extrabold tracking-tight">
-            Welcome to Event Management
+          <h1 className="text-5xl font-extrabold tracking-tight">
+           EVENT HUNT
           </h1>
         </div>
       </div>

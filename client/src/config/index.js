@@ -100,11 +100,6 @@ export const eventUserHeader = [
     label: "My Events",
     path: "/listing",
   },
-  {
-    id: "search",
-    label: "Search",
-    path:"/search"
-  },
 ];
 
 

@@ -7,6 +7,7 @@ const adminEventRouter = require("./routes/admin/event-routes")
 const userEventRouter = require("./routes/user/event-routes")
 const userRegisteredEvents = require("./routes/user/user-event-routes")
 const addressRouter = require("./routes/user/address-routes")
+const paymentRouter = require("./routes/user/payment-routes")
 //Ceate a database connection
 mongoose
   .connect("mongodb+srv://ranawatpakshal310800:Pmmn3108@cluster0.itu5e.mongodb.net/")
@@ -39,6 +40,7 @@ app.use("/api/admin/events",adminEventRouter);
 app.use("/api/user/events", userEventRouter)
 app.use("/api/user/registeredevents",userRegisteredEvents)
 app.use("/api/user/address",addressRouter)
+app.use("/api/user/payment",paymentRouter)
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)

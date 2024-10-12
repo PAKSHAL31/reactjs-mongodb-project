@@ -4,7 +4,7 @@ import adminEventsSlice from "./admin/event-slice"
 import userEventSlice from "./user/event-slice"
 import registeredUserEvents from "./user/registeredevents-slice";
 import userAddress from "./user/address-slice"
-
+import eventPaymentSlice from "./user/payment-slice"
 
 const store = configureStore({
     reducer: {
@@ -12,7 +12,8 @@ const store = configureStore({
         adminEvents: adminEventsSlice,
         userEvents: userEventSlice,
         registeredUserEvents: registeredUserEvents,
-        userAddress: userAddress
+        userAddress: userAddress,
+        userEventPayment: eventPaymentSlice,
     }
 })
 

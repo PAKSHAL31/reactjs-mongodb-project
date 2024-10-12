@@ -10,9 +10,15 @@ import CommonForm from "@/components/common/form";
 import { addEventFormElements } from "@/config";
 import ProductImageUpload from "@/components/admin-view/image-upload";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewEvent, deleteEvent, editEvent, fetchAllEvents } from "@/store/admin/event-slice";
+import {
+  addNewEvent,
+  deleteEvent,
+  editEvent,
+  fetchAllEvents,
+} from "@/store/admin/event-slice";
 import { toast } from "@/hooks/use-toast";
 import AdminEventTile from "@/components/admin-view/event-tile";
+import { Dialog } from "@radix-ui/react-dialog";
 
 const initialEventData = {
   image: null,
@@ -32,6 +38,7 @@ const AdminDashboard = () => {
   const [imageLoadingState, setImageLoadingState] = useState(false);
   const [currentEditedId, setCurrentEditedId] = useState(null);
   const { eventList } = useSelector((state) => state.adminEvents);
+  const [openUserListDialog, setOpenUserListDialog] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -40,7 +47,7 @@ const AdminDashboard = () => {
 
   function onSubmit(event) {
     event.preventDefault();
-    
+
     currentEditedId !== null
       ? dispatch(
           editEvent({
@@ -86,7 +93,6 @@ const AdminDashboard = () => {
     });
   }
 
-
   console.log(eventList);
   //console.log(formData)
 
@@ -105,7 +111,8 @@ const AdminDashboard = () => {
                 setOpenCreateEventsDialog={setOpenCreateEventsDialog} // to open the evnt tab
                 setCurrentEditedId={setCurrentEditedId} // which event id it is and fill the data with that
                 setFormData={setFormData} //tp set the form data
-                handleDelete = {handleDelete}
+                handleDelete={handleDelete}
+                setOpenUserListDialog={setOpenUserListDialog}
               />
             ))
           : null}
