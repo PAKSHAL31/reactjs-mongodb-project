@@ -1,5 +1,6 @@
 # Event Hunt
-
+<!-- admin pakshal31@gmail.com Pmmn@3108--> 
+<!-- user pakshal2805@gmail.com Pmmn@3108 -->
 Event Hunt is a comprehensive event management platform where admins can easily create and manage events, while students can register for events, pay via PayPal, and participate. The platform offers an intuitive interface for filtering, sorting, and managing events, with added features like user authentication and post-event reviews.
 
 ## Features

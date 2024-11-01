@@ -83,4 +83,7 @@ const getEventDetails = async (req, res) => {
   }
 };
 
+
+
+
 module.exports = { getFilteredEvents,getEventDetails };

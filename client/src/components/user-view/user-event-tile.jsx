@@ -25,7 +25,7 @@ const UserEventTile = ({event,handleGetEventDetails}) => {
       };
 
   return (
-    <Card className="w-full max-w-sm mx-auto">
+    <Card className="w-full max-w-sm mx-auto" id = {event.eventName +" "+  event.type}>
     <div>
       <div className="relative">
         <img

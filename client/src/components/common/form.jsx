@@ -53,6 +53,7 @@ const CommonForm = ({
               })
             }
             value={value}
+            name={getControlItem.name}
           >
             <SelectTrigger className="w-full">
               <SelectValue placeholder={getControlItem.label} />
