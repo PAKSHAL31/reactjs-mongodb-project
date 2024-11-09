@@ -24,6 +24,8 @@ const UserEventTile = ({event,handleGetEventDetails}) => {
         });
       };
 
+      const isEventEnded = new Date(event?.eventDate) < new Date();
+
   return (
     <Card className="w-full max-w-sm mx-auto" id = {event.eventName +" "+  event.type}>
     <div>
@@ -64,18 +66,20 @@ const UserEventTile = ({event,handleGetEventDetails}) => {
       </CardContent>
     </div>
     <CardFooter>
-      {event?.participantLimit === 0 ? (
-        <Button className="w-full opacity-60 cursor-not-allowed">
-          No seats available
-        </Button>
-      ) : (
-        <Button
-          className="w-full"
-          onClick={()=> handleGetEventDetails(event?._id)}
-        >
+    {isEventEnded ? (
+          <span className="w-full text-center text-muted-foreground">Event Ended</span>
+        ) : event?.participantLimit === 0 ? (
+          <Button className="w-full opacity-60 cursor-not-allowed">
+            No seats available
+          </Button>
+        ) : (
+          <Button
+            className="w-full"
+            onClick={() => handleGetEventDetails(event?._id)}
+          >
             View
-        </Button>
-      )}
+          </Button>
+        )}
     </CardFooter>
   </Card>
   )
