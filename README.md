@@ -39,3 +39,43 @@ Event Hunt is a comprehensive event management platform where admins can easily 
 
 - **Payments**:
   - **PayPal API**: Integrated to facilitate seamless payments for event registrations.
+
+
+## Setup Instructions
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-repo-url.git
+   ```
+2. **Install Dependencies**
+    - Open Two Terminals
+      - In first terminal type:
+        ```bash
+        cd server
+        npm install
+        npm run dev
+        ```
+      - In second terminal type:
+        ```bash
+        cd client
+        npm install
+        npm run dev
+        ```
+3. Now run the application on the localhost.
+
+## Testing
+
+The client folder contains a tests directory with test files to verify client functionality. To run a test:
+1. Navigate to test folder
+```bash
+cd client/tests
+```
+
+2. Run a specific test file using:
+```bash
+node {test_name}.test.js
+```
+
+
+
+
